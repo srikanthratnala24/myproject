@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Item
-from .serializers import ItemSerializer
+from .models import Item, Book
+from .serializers import ItemSerializer, BookSerializer
 
 class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
@@ -27,3 +27,9 @@ class SearchItemView(generics.ListAPIView):
             )
             return ItemDocument.search().query(q)
         return ItemDocument.search()
+
+
+
+class BookViewset(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
